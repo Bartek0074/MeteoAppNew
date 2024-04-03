@@ -2,6 +2,8 @@ import styles from './CitySelect.module.scss';
 
 import { useState, useEffect } from 'react';
 
+import { useCityForecastStore } from '../../data/cityForecast/store';
+
 import GooglePlacesAutocomplete, {
 	geocodeByAddress,
 	getLatLng,
@@ -15,13 +17,17 @@ type Props = { width?: number | string };
 export default function CitySelect({ width = 'auto' }: Props) {
 	const [value, setValue] = useState<Option | null>(null);
 
+    const { fetchCityForecast, cityForecast } = useCityForecastStore();
+
 	useEffect(() => {
 		if (!value) return;
-		geocodeByAddress(value.label)
-			.then((results) => getLatLng(results[0]))
-			.then((latLng) => console.log('Success', latLng))
-			.catch((error) => console.error('Error', error));
+        fetchCityForecast(value);
 	}, [value]);
+
+    useEffect(() => {
+        if (!cityForecast) return;
+        console.log(cityForecast);
+    }, [cityForecast]);
 
 	return (
 		<div
