@@ -22,7 +22,7 @@
 		position: absolute;
 		width: 12.5%;
 		height: 12.5%;
-        animation: entry 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+		animation: entry 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 		img {
 			width: 100%;
 			aspect-ratio: 1;
@@ -34,10 +34,10 @@
 			padding: 2px 4px;
 			max-width: min-content;
 			text-align: center;
-			font-size: 16px;
+			font-size: 14px;
 			color: $dirtyWhiteColor;
 			background-color: $primaryColorAlpha;
-			border-radius: 4px;
+			border-radius: 2px;
 		}
 		&Name {
 			position: absolute;
@@ -45,13 +45,12 @@
 			top: 67.5%;
 			transform: translate(-50%);
 			padding: 2px 4px;
-			border-radius: 4px;
-			font-size: 12px;
+			border-radius: 2px;
+			font-size: 11px;
 			text-align: center;
-			line-height: 14px;
-			letter-spacing: 0.5px;
+			line-height: 11px;
 			background-color: $dirtyWhiteColorAlpha;
-            text-transform: uppercase;
+			text-transform: uppercase;
 			color: $primaryColorDark;
 			cursor: pointer;
 			transition: background-color 0.3s;
@@ -116,16 +115,27 @@
 		top: 43.5%;
 		left: 28.5%;
 	}
-    .Bydgoszcz{
-        top: 32.5%;
-        left: 37.5%;
-    
-    }
+	.Bydgoszcz {
+		top: 32.5%;
+		left: 37.5%;
+	}
 }
 
 @media (min-width: 576px) {
 	.map {
 		width: 80%;
+		.city {
+			.temp {
+				font-size: 16px;
+				border-radius: 4px;
+			}
+			&Name {
+				border-radius: 4px;
+				font-size: 12px;
+				line-height: 14px;
+				letter-spacing: 0.5px;
+			}
+		}
 	}
 }
 
@@ -136,13 +146,12 @@
 }
 
 @keyframes entry {
-    from {
-        opacity: 0;
-        transform: translateY(-20%);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    
+	from {
+		opacity: 0;
+		transform: translateY(-20%);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }

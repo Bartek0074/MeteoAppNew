@@ -9,4 +9,20 @@
 body {
 	font-family: 'Lato', sans-serif;
 	background-color: $backgroundColor;
+	scrollbar-width: thin; /* "auto" or "thin" */
+	scrollbar-color: #11afcf44 #33333311; /* scroll thumb and track */
+}
+
+::-webkit-scrollbar {
+	width: 8px; /* width of the entire scrollbar */
+}
+
+::-webkit-scrollbar-track {
+	background: #33333311; /* color of the tracking area */
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #11afcf; /* color of the scroll thumb */
+	border-radius: 20px; /* roundness of the scroll thumb */
+	border: 3px solid #33333311; /* creates padding around scroll thumb */
 }
