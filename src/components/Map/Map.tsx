@@ -3,11 +3,11 @@ import classNames from 'classnames';
 
 import { useEffect, useState } from 'react';
 
-import { CityWeather } from '../../../data/cities/types';
-import { useCitiesStore } from '../../../data/cities/store';
-import { useCityForecastStore } from '../../../data/cityForecast/store';
+import { CityWeather } from '../../data/cities/types';
+import { useCitiesStore } from '../../data/cities/store';
+import { useCityForecastStore } from '../../data/cityForecast/store';
 
-import LoadingSpinner from '../../../components/LoadingSpinner/LoadingSpinner';
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
 type Props = { setFetching?: (fetching: boolean) => void };
 
@@ -41,6 +41,11 @@ export default function Map({ setFetching }: Props) {
 			setTimeout(() => {
 				setFetching && setFetching(false);
 			}, 350);
+			setTimeout(() => {
+				if (forecastEl) {
+					forecastEl.scrollIntoView({ behavior: 'smooth' });
+				}
+			}, 375);
 		}
 	};
 

@@ -3,7 +3,7 @@ import { geocodeByAddress, getLatLng } from 'react-google-places-autocomplete';
 import { Option } from 'react-google-places-autocomplete/build/types';
 
 interface CityForecastStoreState {
-	cityForecast: object | null;
+	cityForecast: any | null;
 	cityName: string | null;
 }
 

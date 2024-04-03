@@ -4,17 +4,16 @@ import { useState } from 'react';
 
 import { useCityForecastStore } from '../../data/cityForecast/store';
 
-import Map from './Map/Map';
+import Map from '../../components/Map/Map';
 import CitySelect from '../../components/CitySelect/CitySelect';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
-import Separator from './Separator/Separator';
+import Separator from '../../components/Separator/Separator';
+import Forecast from '../../components/Forecast/Forecast';
 
 export default function HomePage() {
 	const { cityForecast, cityName } = useCityForecastStore();
 
 	const [fetching, setFetching] = useState(false);
-
-	console.log(cityForecast);
 
 	return (
 		<div className={styles.homePage}>
@@ -43,8 +42,9 @@ export default function HomePage() {
 							<p className={styles.forecastTitle}>
 								{cityForecast
 									? `Forecast for ${cityName}:`
-									: 'Choose a location on the bar above to see the forecast or click on a city on the map.'}
+									: 'Search for a location or click on a city on the map to see the forecast.'}
 							</p>
+							{cityForecast ? <Forecast /> : null}
 						</div>
 					)}
 				</div>
