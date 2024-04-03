@@ -9,22 +9,35 @@ import { Option } from 'react-google-places-autocomplete/build/types';
 
 import { colors } from '../../utils/colors';
 
-type Props = { width?: number | string };
+type Props = {
+	setLoading?: (loading: boolean) => void;
+	setCityName?: (cityName: string) => void;
+	width?: number | string;
+};
 
-export default function CitySelect({ width = 'auto' }: Props) {
+export default function CitySelect({
+	setLoading,
+	setCityName,
+	width = 'auto',
+}: Props) {
 	const [value, setValue] = useState<Option | null>(null);
 
-	const { fetchCityForecast, cityForecast } = useCityForecastStore();
+	const { fetchCityForecast } = useCityForecastStore();
 
 	useEffect(() => {
 		if (!value) return;
-		fetchCityForecast(value);
-	}, [value]);
+		setCityName && setCityName(value.label);
 
-	useEffect(() => {
-		if (!cityForecast) return;
-		console.log(cityForecast);
-	}, [cityForecast]);
+		try {
+			fetchCityForecast(value);
+		} catch (error) {
+			console.log(error);
+		} finally {
+			setTimeout(() => {
+				setLoading && setLoading(false);
+			}, 350);
+		}
+	}, [value]);
 
 	return (
 		<div
@@ -37,7 +50,10 @@ export default function CitySelect({ width = 'auto' }: Props) {
 				apiKey={process.env.REACT_APP_GOOGLE_API_KEY}
 				selectProps={{
 					value,
-					onChange: (e) => setValue(e),
+					onChange: (e) => {
+						setLoading && setLoading(true);
+						setValue(e);
+					},
 					placeholder: 'Search for a location...',
 					styles: {
 						control: (provided) => ({

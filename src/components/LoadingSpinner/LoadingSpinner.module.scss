@@ -1,0 +1,100 @@
+@use '../../styles/variables' as *;
+
+.loadingSpinner {
+	width: 100px;
+	height: 110px;
+	position: relative;
+	.spinner {
+		position: absolute;
+		top: 45%;
+		left: 50%;
+		transform: translate(-50%, -40%);
+		z-index: 1;
+		border-radius: 100%;
+		border-left-color: transparent !important;
+		border-right-color: transparent !important;
+		&One {
+			width: 80px;
+			height: 80px;
+			border: 6px solid $primaryColor;
+			animation: spin 1.5s linear infinite;
+		}
+
+		&Two {
+			width: 55px;
+			height: 55px;
+			border: 6px solid $primaryColor;
+			animation: negative-spin 2s linear infinite;
+		}
+
+		&Three {
+			width: 30px;
+			height: 30px;
+			border: 6px solid $primaryColor;
+			animation: spin 2.5s linear infinite;
+		}
+	}
+
+	.text {
+		position: absolute;
+		bottom: 0%;
+		left: 50%;
+		transform: translateX(-50%);
+		color: $primaryColor;
+		letter-spacing: 1px;
+		text-align: center;
+		text-transform: uppercase;
+		font-weight: bold;
+		font-size: 14px;
+	}
+}
+
+@keyframes spin {
+	0% {
+		transform: translate(-50%, -50%) rotate(0deg);
+	}
+	100% {
+		transform: translate(-50%, -50%) rotate(360deg);
+	}
+}
+
+@keyframes negative-spin {
+	0% {
+		transform: translate(-50%, -50%) rotate(0deg);
+	}
+	100% {
+		transform: translate(-50%, -50%) rotate(-360deg);
+	}
+}
+
+@media (min-width: 576px) {
+	.loadingSpinner {
+		width: 140px;
+		height: 160px;
+		.spinner {
+			&One {
+				width: 110px;
+				height: 110px;
+				border: 8px solid $primaryColor;
+				animation: spin 1.5s linear infinite;
+			}
+
+			&Two {
+				width: 80px;
+				height: 80px;
+				border: 8px solid $primaryColor;
+				animation: negative-spin 2s linear infinite;
+			}
+
+			&Three {
+				width: 50px;
+				height: 50px;
+				border: 8px solid $primaryColor;
+				animation: spin 2.5s linear infinite;
+			}
+		}
+		.text {
+			font-size: 18px;
+		}
+	}
+}

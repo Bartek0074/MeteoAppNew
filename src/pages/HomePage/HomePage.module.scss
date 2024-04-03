@@ -16,6 +16,13 @@
 		box-shadow: $windowBoxShadow;
 		overflow-y: scroll;
 	}
+	.loading {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		height: 85%;
+	}
 	.content {
 		padding: 16px;
 	}
