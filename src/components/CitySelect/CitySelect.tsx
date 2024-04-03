@@ -4,10 +4,7 @@ import { useState, useEffect } from 'react';
 
 import { useCityForecastStore } from '../../data/cityForecast/store';
 
-import GooglePlacesAutocomplete, {
-	geocodeByAddress,
-	getLatLng,
-} from 'react-google-places-autocomplete';
+import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 import { Option } from 'react-google-places-autocomplete/build/types';
 
 import { colors } from '../../utils/colors';
@@ -17,17 +14,17 @@ type Props = { width?: number | string };
 export default function CitySelect({ width = 'auto' }: Props) {
 	const [value, setValue] = useState<Option | null>(null);
 
-    const { fetchCityForecast, cityForecast } = useCityForecastStore();
+	const { fetchCityForecast, cityForecast } = useCityForecastStore();
 
 	useEffect(() => {
 		if (!value) return;
-        fetchCityForecast(value);
+		fetchCityForecast(value);
 	}, [value]);
 
-    useEffect(() => {
-        if (!cityForecast) return;
-        console.log(cityForecast);
-    }, [cityForecast]);
+	useEffect(() => {
+		if (!cityForecast) return;
+		console.log(cityForecast);
+	}, [cityForecast]);
 
 	return (
 		<div
@@ -74,15 +71,15 @@ export default function CitySelect({ width = 'auto' }: Props) {
 						}),
 						indicatorSeparator: (provided) => ({
 							...provided,
-                            backgroundColor: colors.dirtyWhite,
+							backgroundColor: colors.dirtyWhite,
 						}),
-                        dropdownIndicator: (provided) => ({
-                            ...provided,
-                            color: colors.dirtyWhite,
-                            ":hover": {
-                                color: colors.primary,
-                            }
-                        }),
+						dropdownIndicator: (provided) => ({
+							...provided,
+							color: colors.dirtyWhite,
+							':hover': {
+								color: colors.primary,
+							},
+						}),
 					},
 				}}
 			/>
