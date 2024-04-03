@@ -2,41 +2,46 @@ import styles from './CitySelect.module.scss';
 
 import { useState, useEffect } from 'react';
 
+import { Option } from 'react-google-places-autocomplete/build/types';
 import { useCityForecastStore } from '../../data/cityForecast/store';
 
-import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
-import { Option } from 'react-google-places-autocomplete/build/types';
+import GooglePlacesAutocomplete, {
+	geocodeByAddress,
+	getLatLng,
+} from 'react-google-places-autocomplete';
 
 import { colors } from '../../utils/colors';
 
 type Props = {
-	setLoading?: (loading: boolean) => void;
-	setCityName?: (cityName: string) => void;
+	setFetching?: (loading: boolean) => void;
 	width?: number | string;
 };
 
-export default function CitySelect({
-	setLoading,
-	setCityName,
-	width = 'auto',
-}: Props) {
+export default function CitySelect({ setFetching, width = 'auto' }: Props) {
 	const [value, setValue] = useState<Option | null>(null);
 
-	const { fetchCityForecast } = useCityForecastStore();
+	const { fetchCityForecast, setCityName } = useCityForecastStore();
 
 	useEffect(() => {
-		if (!value) return;
-		setCityName && setCityName(value.label);
+		const fetchCityData = async () => {
+			if (!value) return;
 
-		try {
-			fetchCityForecast(value);
-		} catch (error) {
-			console.log(error);
-		} finally {
-			setTimeout(() => {
-				setLoading && setLoading(false);
-			}, 350);
-		}
+			setCityName(value.label);
+
+			try {
+				const results = await geocodeByAddress(value.label);
+				const cords = await getLatLng(results[0]);
+				fetchCityForecast({ lat: cords.lat, lng: cords.lng });
+			} catch (error) {
+				console.log(error);
+			} finally {
+				setTimeout(() => {
+					setFetching && setFetching(false);
+				}, 350);
+			}
+		};
+
+		fetchCityData();
 	}, [value]);
 
 	return (
@@ -51,7 +56,7 @@ export default function CitySelect({
 				selectProps={{
 					value,
 					onChange: (e) => {
-						setLoading && setLoading(true);
+						setFetching && setFetching(true);
 						setValue(e);
 					},
 					placeholder: 'Search for a location...',

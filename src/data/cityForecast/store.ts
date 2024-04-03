@@ -4,10 +4,12 @@ import { Option } from 'react-google-places-autocomplete/build/types';
 
 interface CityForecastStoreState {
 	cityForecast: object | null;
+	cityName: string | null;
 }
 
 interface CityForecastStoreActions {
-	fetchCityForecast: (cityValue: Option) => Promise<void>;
+	fetchCityForecast: (cityValue: { lat: number; lng: number }) => Promise<void>;
+	setCityName: (cityName: string) => void;
 }
 
 type CityForecastStore = CityForecastStoreState & CityForecastStoreActions;
@@ -15,20 +17,21 @@ type CityForecastStore = CityForecastStoreState & CityForecastStoreActions;
 export const useCityForecastStore = create<CityForecastStore>(
 	(set, getState) => ({
 		cityForecast: null,
+		cityName: null,
 
-		fetchCityForecast: async (cityValue) => {
+		fetchCityForecast: async ({ lat, lng }) => {
 			try {
-				const results = await geocodeByAddress(cityValue.label);
-				const latLng = await getLatLng(results[0]);
-
 				const response = await fetch(
-					`https://api.openweathermap.org/data/2.5/forecast?lat=${latLng.lat}&lon=${latLng.lng}&units=metric&appid=${process.env.REACT_APP_OPEN_WEATHER_API_KEY}`
+					`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lng}&units=metric&appid=${process.env.REACT_APP_OPEN_WEATHER_API_KEY}`
 				);
 				const data = await response.json();
 				set({ cityForecast: data });
 			} catch (error) {
 				throw error;
 			}
+		},
+		setCityName: (cityName: string) => {
+			set({ cityName });
 		},
 	})
 );
