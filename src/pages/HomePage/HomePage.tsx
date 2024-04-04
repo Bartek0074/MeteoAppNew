@@ -9,6 +9,7 @@ import CitySelect from '../../components/CitySelect/CitySelect';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import Separator from '../../components/Separator/Separator';
 import Forecast from '../../components/Forecast/Forecast';
+import Weather from '../../components/Weather/Weather';
 
 export default function HomePage() {
 	const { cityForecast, cityName } = useCityStore();
@@ -44,7 +45,12 @@ export default function HomePage() {
 									? `Forecast for ${cityName}:`
 									: 'Search for a location or click on a city on the map to see the forecast.'}
 							</p>
-							{cityForecast ? <Forecast /> : null}
+							{cityForecast ? (
+								<>
+									<Weather />
+									<Forecast />
+								</>
+							) : null}
 						</div>
 					)}
 				</div>
