@@ -1,0 +1,42 @@
+@use '../../styles/variables' as *;
+
+.footer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 8px 0;
+	p {
+		text-align: center;
+		font-size: 16px;
+		a{
+			color: $primaryColorDark;
+			text-decoration: none;
+			transition: color 0.3s;
+			font-weight: 400;
+			&:hover {
+				color: $primaryColor;
+			}
+		
+		}
+	}
+	.link {
+		margin-left: 2.5px;
+		a {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			color: $primaryColorDark;
+			transition: color 0.3s;
+			font-size: 17px;
+			&:hover {
+				color: $primaryColor;
+			}
+		}
+	}
+}
+
+@media (min-width: 576px) {
+	.footer {
+		padding: 16px 0;
+	}
+}

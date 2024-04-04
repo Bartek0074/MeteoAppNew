@@ -13,6 +13,7 @@ import Weather from '../../components/Weather/Weather';
 import TempChart from '../../components/TempChart/TempChart';
 
 import { BsSearch } from 'react-icons/bs';
+import Footer from '../../components/Footer/Footer';
 
 export default function HomePage() {
 	const { cityForecast, cityName } = useCityStore();
@@ -79,6 +80,8 @@ export default function HomePage() {
 						</>
 					)}
 				</div>
+				<Separator />
+				<Footer />
 			</div>
 		</div>
 	);
