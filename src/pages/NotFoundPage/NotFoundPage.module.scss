@@ -1,0 +1,62 @@
+@use '../../styles/variables' as *;
+
+.notFoundPage {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
+	overflow: scroll;
+	background-color: $backgroundColor;
+	.icon {
+		font-size: 188px;
+		color: $primaryColor;
+	}
+	h1 {
+		margin-top: 12px;
+		font-size: 24px;
+		font-weight: 400;
+		color: $fontBlack;
+	}
+	p {
+		margin-bottom: 16px;
+		font-size: 16px;
+		color: $fontGray;
+	}
+
+	button {
+		padding: 8px 24px;
+		border: none;
+		border-radius: 8px;
+		background-color: $primaryColor;
+		color: $dirtyWhiteColor;
+		font-size: 16px;
+		text-transform: uppercase;
+		cursor: pointer;
+		transition: background-color 0.3s;
+		&:hover {
+			background-color: $primaryColorDark;
+		}
+	}
+}
+
+@media (min-width: 576px) {
+	.notFoundPage {
+		.icon {
+			font-size: 240px;
+		}
+		h1 {
+			margin-top: 24px;
+			font-size: 32px;
+		}
+		p {
+			margin-bottom: 32px;
+			font-size: 18px;
+		}
+		button {
+			padding: 12px 36px;
+			font-size: 18px;
+		}
+	}
+}
