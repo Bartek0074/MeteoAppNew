@@ -10,6 +10,7 @@ import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import Separator from '../../components/Separator/Separator';
 import Forecast from '../../components/Forecast/Forecast';
 import Weather from '../../components/Weather/Weather';
+import TempChart from '../../components/TempChart/TempChart';
 
 export default function HomePage() {
 	const { cityForecast, cityName } = useCityStore();
@@ -49,6 +50,7 @@ export default function HomePage() {
 								<>
 									<Weather />
 									<Forecast />
+									<TempChart />
 								</>
 							) : null}
 						</div>

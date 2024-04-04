@@ -1,0 +1,21 @@
+@use '../../styles/variables' as *;
+
+.tempChart {
+	width: 100%;
+	height: 275px;
+	.line {
+		height: 100%;
+	}
+}
+
+@media (min-width: 576px) {
+	.tempChart {
+		height: 350px;
+	}
+}
+
+@media (min-width: 992px) {
+	.tempChart {
+		height: 425px;
+	}
+}
