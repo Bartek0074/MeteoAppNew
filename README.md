@@ -1,46 +1,64 @@
-# Getting Started with Create React App
+# MeteoAppNew
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a fantastic React Weather App designed to provide you with current weather updates and forecasts for any location. Built with React.js and powered by the reliable data from the [OpenWeather API](https://openweathermap.org/api), you can easily check the weather for your location or any other city. Plus, explore an interactive map of Poland to visualize current weather conditions across the country. With the integration of the [Google Places API](https://developers.google.com/maps/documentation/places/web-service?hl=en) for seamless location search, planning your day has never been easier.
 
-## Available Scripts
+This version of the app introduces a range of upgrades, such as integration with Zustand and TypeScript, [link](https://github.com/Bartek0074/MeteoApp/) to old version.
 
-In the project directory, you can run:
+## Demo
 
-### `npm start`
+Live Demo [here](https://bartek0074-meteoappnew.netlify.app/).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![MeteoAppNew](https://github.com/Bartek0074/MeteoApp/assets/88652468/48113b1b-d974-4035-a599-bdedfa4a1ac3)
+![MeteoAppNew](https://github.com/Bartek0074/MeteoApp/assets/88652468/3500f143-ab3a-421a-9597-bf3b0458a724)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+## Instructions
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+First clone this repository.
 
-### `npm run build`
+```bash
+$ git clone https://github.com/Bartek0074/MeteoAppNew.git
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Get a free API key from OpenWeather. Get it [here](https://openweathermap.org/api).
+Get a free API key from Google. Get it [here](https://developers.google.com/maps/documentation/places/web-service?hl=en).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Create a .env file in the root of your project folder and add the following.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+REACT_APP_OPEN_WEATHER_API_KEY=[YOUR_API_KEY_FROM_OPEN_WEATHER]
+REACT_APP_GOOGLE_API_KEY=[YOUR_API_KEY_FROM_OGOOGLE]
+```
 
-### `npm run eject`
+Install dependencies. Make sure you already have [`nodejs`](https://nodejs.org/en/) & [`npm`](https://www.npmjs.com/) installed in your system.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+$ npm install # or yarn
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Run it
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+$ npm start # or yarn start
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Technologies
 
-## Learn More
+- React,
+- Typescript,
+- Zustand,
+- SCSS,
+- React Router.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## APIs
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- [OpenWeather API](https://openweathermap.org/api),
+- [Google Places API](https://openweathermap.org/api).
+ 
+## Other packages
+
+- classnames,
+- react-icons,
+- chart.js,
+- react-chartjs-2,
+- react-google-places-autocomplete.
