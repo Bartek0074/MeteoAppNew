@@ -5,10 +5,10 @@ import { useState } from 'react';
 
 import ForecastDay from '../ForecastDay/ForecastDay';
 
-import { useCityForecastStore } from '../../data/cityForecast/store';
+import { useCityStore } from '../../data/city/store';
 
 export default function Forecast() {
-	const { cityForecast } = useCityForecastStore();
+	const { cityForecast } = useCityStore();
 
 	const [activeDayIndex, setActiveDayIndex] = useState(0);
 

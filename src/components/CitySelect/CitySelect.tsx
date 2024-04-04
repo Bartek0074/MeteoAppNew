@@ -3,7 +3,7 @@ import styles from './CitySelect.module.scss';
 import { useState, useEffect } from 'react';
 
 import { Option } from 'react-google-places-autocomplete/build/types';
-import { useCityForecastStore } from '../../data/cityForecast/store';
+import { useCityStore } from '../../data/city/store';
 
 import GooglePlacesAutocomplete, {
 	geocodeByAddress,
@@ -20,7 +20,7 @@ type Props = {
 export default function CitySelect({ setFetching, width = 'auto' }: Props) {
 	const [value, setValue] = useState<Option | null>(null);
 
-	const { fetchCityForecast, setCityName } = useCityForecastStore();
+	const { fetchCity, setCityName } = useCityStore();
 
 	useEffect(() => {
 		const fetchCityData = async () => {
@@ -31,7 +31,7 @@ export default function CitySelect({ setFetching, width = 'auto' }: Props) {
 			try {
 				const results = await geocodeByAddress(value.label);
 				const cords = await getLatLng(results[0]);
-				fetchCityForecast({ lat: cords.lat, lng: cords.lng });
+				fetchCity({ lat: cords.lat, lng: cords.lng });
 			} catch (error) {
 				console.log(error);
 			} finally {

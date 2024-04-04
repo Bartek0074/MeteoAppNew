@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 
 import { CityWeather } from '../../data/cities/types';
 import { useCitiesStore } from '../../data/cities/store';
-import { useCityForecastStore } from '../../data/cityForecast/store';
+import { useCityStore } from '../../data/city/store';
 
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
@@ -13,7 +13,7 @@ type Props = { setFetching?: (fetching: boolean) => void };
 
 export default function Map({ setFetching }: Props) {
 	const { cities, fetchCities } = useCitiesStore();
-	const { fetchCityForecast, setCityName } = useCityForecastStore();
+	const { fetchCity, setCityName } = useCityStore();
 
 	const [loading, setLoading] = useState(true);
 
@@ -34,7 +34,7 @@ export default function Map({ setFetching }: Props) {
 		setFetching && setFetching(true);
 		setCityName(city.namePl);
 		try {
-			fetchCityForecast({ lat: city.lat, lng: city.lng });
+			fetchCity({ lat: city.lat, lng: city.lng });
 		} catch (error) {
 			console.log(error);
 		} finally {

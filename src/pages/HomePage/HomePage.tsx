@@ -2,7 +2,7 @@ import styles from './HomePage.module.scss';
 
 import { useState } from 'react';
 
-import { useCityForecastStore } from '../../data/cityForecast/store';
+import { useCityStore } from '../../data/city/store';
 
 import Map from '../../components/Map/Map';
 import CitySelect from '../../components/CitySelect/CitySelect';
@@ -11,7 +11,7 @@ import Separator from '../../components/Separator/Separator';
 import Forecast from '../../components/Forecast/Forecast';
 
 export default function HomePage() {
-	const { cityForecast, cityName } = useCityForecastStore();
+	const { cityForecast, cityName } = useCityStore();
 
 	const [fetching, setFetching] = useState(false);
 
