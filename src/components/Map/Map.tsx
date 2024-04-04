@@ -9,6 +9,8 @@ import { useCityStore } from '../../data/city/store';
 
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
+import { scrollToContent } from '../../utils/scrollToContent';
+
 type Props = { setFetching?: (fetching: boolean) => void };
 
 export default function Map({ setFetching }: Props) {
@@ -26,13 +28,10 @@ export default function Map({ setFetching }: Props) {
 	}, []);
 
 	const onCityClick = async (city: CityWeather) => {
-		const forecastEl = document.getElementById('forecast');
-		if (forecastEl) {
-			forecastEl.scrollIntoView({ behavior: 'smooth' });
-		}
+		scrollToContent();
 
 		setFetching && setFetching(true);
-		setCityName(city.namePl);
+		setCityName(city.namePl + ', Poland');
 		try {
 			fetchCity({ lat: city.lat, lng: city.lng });
 		} catch (error) {
@@ -42,9 +41,7 @@ export default function Map({ setFetching }: Props) {
 				setFetching && setFetching(false);
 			}, 350);
 			setTimeout(() => {
-				if (forecastEl) {
-					forecastEl.scrollIntoView({ behavior: 'smooth' });
-				}
+				scrollToContent();
 			}, 375);
 		}
 	};

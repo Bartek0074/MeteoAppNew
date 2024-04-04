@@ -11,6 +11,7 @@ import GooglePlacesAutocomplete, {
 } from 'react-google-places-autocomplete';
 
 import { colors } from '../../utils/colors';
+import { scrollToContent } from '../../utils/scrollToContent';
 
 type Props = {
 	setFetching?: (loading: boolean) => void;
@@ -38,6 +39,9 @@ export default function CitySelect({ setFetching, width = 'auto' }: Props) {
 				setTimeout(() => {
 					setFetching && setFetching(false);
 				}, 350);
+				setTimeout(() => {
+					scrollToContent();
+				}, 375);
 			}
 		};
 

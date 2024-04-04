@@ -27,18 +27,29 @@
 				white-space: nowrap;
 			}
 		}
-		.mapTitle,
-		.forecastTitle {
+		.subtitle {
 			padding: 12px 0px;
 			text-align: center;
 			color: $fontBlack;
-			font-size: 16px;
+			font-size: 18px;
 			font-weight: normal;
 			strong {
 				font-weight: bold;
 				margin-left: 4px;
 				white-space: nowrap;
 			}
+		}
+		.cityTitle {
+			padding: 14px 0px;
+			text-align: center;
+			color: $fontBlack;
+			font-size: 24px;
+			font-weight: normal;
+		}
+		.componentTitle {
+			margin: 8px 0;
+			font-size: 16px;
+			text-transform: uppercase;
 		}
 		.select {
 			display: flex;
@@ -52,13 +63,39 @@
 			align-items: center;
 			padding: 12px 0;
 		}
-		.forecast {
+		.content {
 			.loading {
 				display: flex;
 				justify-content: center;
 				align-items: center;
 				width: 100%;
 				height: 85%;
+			}
+			.component {
+				padding: 16px 0;
+			}
+			.searchInfo {
+				padding: 16px 0;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				.icon{
+					margin-bottom: 12px;
+					font-size: 64px;
+					color: $primaryColor;
+				}
+				.paragraph{
+					text-align: center;
+					font-size: 14px;
+					color: $fontGray;
+					&:first-of-type{
+						color: $fontBlack;
+						font-weight: 400;
+						font-size: 18px;
+						margin-bottom: 4px;
+					}
+				}
 			}
 		}
 	}
@@ -72,16 +109,41 @@
 				padding: 24px 0px;
 				font-size: 36px;
 			}
-			.mapTitle,
-			.forecastTitle {
+			.subtitle {
 				padding: 24px 0px;
-				font-size: 22px;
+				font-size: 24px;
+			}
+			.cityTitle {
+				padding: 32px 0px;
+				font-size: 32px;
+			}
+			.componentTitle {
+				font-size: 18px;
 			}
 			.select {
 				padding: 12px 0;
 			}
 			.map {
 				padding: 16px 0 24px;
+			}
+			.content {
+				.component {
+					padding: 24px 0;
+				}
+				.searchInfo {
+					padding: 24px 0;
+					.icon{
+						margin-bottom: 16px;
+						font-size: 84px;
+					}
+					.paragraph{
+						font-size: 16px;
+						&:first-of-type{
+							font-size: 20px;
+							margin-bottom: 6px;
+						}
+					}
+				}
 			}
 		}
 	}
