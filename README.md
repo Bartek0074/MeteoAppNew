@@ -45,7 +45,7 @@ $ npm start # or yarn start
 ## Technologies
 
 - React,
-- Typescript,
+- TypeScript,
 - Zustand,
 - SCSS,
 - React Router.
